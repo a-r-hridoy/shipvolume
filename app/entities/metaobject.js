@@ -104,7 +104,7 @@ export class MetaObject {
     query {
         metaobjectDefinitionByType(type: "${type}") {
             id
-            name 
+            name
             type
             fieldDefinitions {
                 key

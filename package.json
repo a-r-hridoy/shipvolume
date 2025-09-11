@@ -35,6 +35,7 @@
     "@remix-run/serve": "^2.7.1",
     "@shopify/app-bridge": "^3.7.10",
     "@shopify/app-bridge-react": "^4.2.2",
+    "@shopify/discount-app-components": "^3.0.2",
     "@shopify/polaris": "^12.0.0",
     "@shopify/polaris-icons": "^8.8.0",
     "@shopify/polaris-viz": "^14.0.0",
