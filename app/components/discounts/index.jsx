@@ -17,13 +17,13 @@ export default function Discounts() {
   ];
 
   return (
-    <PageLayout showBackButton title="Discounts" primaryAction={<Button variant="primary" url='/app/new-discount'>New Discount</Button>}>
+    <PageLayout showBackButton title="Discounts" primaryAction={<Button variant="primary" url='/app/discount/new'>New Discount</Button>}>
       <PageTitleBar title="Discounts" />
       {volumeDiscounts.nodes.length < 1 ?(
       <Card>
         <EmptyState
           heading="Manage your Discounts"
-          action={{content: 'Add discount', url: '/app/new-discount'}}
+          action={{content: 'Add discount', url: '/app/discount/new'}}
           secondaryAction={{
             content: 'Learn more',
             url: 'https://help.shopify.com',
@@ -36,7 +36,7 @@ export default function Discounts() {
       ) : (
           <ShipReadyTable
           data={volumeDiscounts}
-          resourceName={{ singular: 'Volume Discount', plural: 'Volume Discounts' }}
+          resourceName={{ singular: 'Volume discount', plural: 'Volume discounts', handle: 'discounts' }}
           pagination={true}
           headings={headings}
           actions={true}

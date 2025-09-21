@@ -32,7 +32,7 @@ import {
 import enPolarisTranslations from '@shopify/polaris/locales/en.json';
 import "@shopify/polaris/build/esm/styles.css";
 import "@shopify/discount-app-components/build/esm/styles.css";
-import PreviewMarkup from "./previewMarkup";
+import PreviewMarkup from "../discounts/previewMarkup";
 
 import { Form, useSubmit } from "@remix-run/react";
 

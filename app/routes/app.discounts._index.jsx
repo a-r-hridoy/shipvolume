@@ -110,118 +110,45 @@
 
 
 
-import { authenticateExtra } from "../config/shopify";
+import { authenticateExtra } from "../config/shopify.js";
 import { json } from "@remix-run/node";
 import Discounts from "../components/discounts/index.jsx";
 import { VolumeDiscountModel } from "../models/volumeDiscount.model.js";
 
-// const METAFIELD_NAMESPACE = "shipready";
-// const METAFIELD_KEY = "appSettings";
-// const METAFIELD_TYPE = "json";
 
 export const loader = async ({ request }) => {
   const { metaobject } = await authenticateExtra(request);
   
   const url = new URL(request.url);
   const cursor = url.searchParams.get('cursor');
-  const limit = 4;
+  const limit = 5;
   const volumeDiscounts = await metaobject.list(VolumeDiscountModel, limit, cursor);
 
   return json({
     volumeDiscounts
   })
-  // const [features, currentAppMetafield] = await Promise.all([
-  //   metaobject.list(FeatureModel),
-  //   metafield.getCurrentAppMetafield(METAFIELD_NAMESPACE, METAFIELD_KEY),
-  // ]);
-
-  // const settingsData = currentAppMetafield?.value
-  //   ? JSON.parse(currentAppMetafield.value)
-  //   : {};
-
-  // return json({ settingsData, features });
+  
 
 };
 
 export async function action({ request }) {
   const { metaobject } = await authenticateExtra(request);
-  // let formData = Object.fromEntries(await request.formData());
+  let formData = await request.json();
 
-  // if (formData.saveSettings) {
-  //   const currentAppOwnerID = await metafield.getCurrentAppOwnerId();
-  //   const metafieldData = {
-  //     namespace: METAFIELD_NAMESPACE,
-  //     key: METAFIELD_KEY,
-  //     value: JSON.stringify(formData),
-  //     type: METAFIELD_TYPE,
-  //     ownerId: currentAppOwnerID,
-  //   };
+  if (formData.deleteObject){
+    await metaobject.delete(formData.objectId);
+  }
 
-  //   const created = await metafield.create(metafieldData);
-  // }
+  return({
+    status: {
+      success: true,
+      message: "Discount deleted successfully",
+    },
+  });
 
-  // if (formData.saveFeatures) {
-  //   try {
-  //     // Check if the MetaObject definition already exists
-  //     let definition;
-  //     try {
-  //       definition = await metaobject.getDefinition({
-  //         type: FeatureModel.type,
-  //       });
-  //     } catch (error) {
-  //       // If the definition doesn't exist, create it
-  //       if (error.message.includes("No definition found")) {
-  //         await metaobject.define(FeatureModel);
-  //       } else {
-  //         throw error; // Re-throw if it's a different error
-  //       }
-  //     }
+  
+};
 
-  //     // Now proceed with create or update
-  //     if (formData.id) {
-  //       await metaobject.update(FeatureModel, formData.id, formData);
-  //     } else {
-  //       await metaobject.create(FeatureModel, formData);
-  //     }
-  //   } catch (e) {
-  //     console.error("Error saving features:", e);
-  //     return json(
-  //       {
-  //         status: {
-  //           success: false,
-  //           message: `Error saving features: ${e.message}`,
-  //         },
-  //       },
-  //       { status: 400 },
-  //     );
-  //   }
-  // }
-
-  // if (formData.deleteFeatures) {
-  //   try {
-  //     await metaobject.delete(formData.id);
-  //   } catch (e) {
-  //     console.error("Error deleting feature:", e);
-  //     return json(
-  //       {
-  //         status: {
-  //           success: false,
-  //           message: `Error deleting feature: ${e.message}`,
-  //         },
-  //       },
-  //       { status: 400 },
-  //     );
-  //   }
-  // }
-
-  // return json({
-  //   settingsData: formData,
-  //   status: {
-  //     success: true,
-  //     message: "Operation completed successfully",
-  //   },
-  // });
-}
 
 export default function DiscountsPage() {
   return <Discounts />;

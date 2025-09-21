@@ -1,5 +1,5 @@
 import { json } from "@remix-run/react"
-import { NewDiscount } from "../components/newDiscount"
+import { DiscountForm } from "../components/discounts/discountForm.jsx"
 import { authenticateExtra } from "../config/shopify";
 import { VolumeDiscountModel }  from "../models/volumeDiscount.model.js"
 
@@ -12,8 +12,6 @@ export const loader = async ({ request }) => {
 export const action = async ({ request }) => {
   const { admin, metaobject } = await authenticateExtra(request);
   let formData = await request.json();
-  console.log('------> formData ------> : ', formData);
-
   if (formData.saveDiscount){
     await saveDiscount(formData, metaobject);
   }
@@ -21,14 +19,12 @@ export const action = async ({ request }) => {
   return json({});
 }
 
-
 export default function NewDiscountPage(){
-  return <NewDiscount />
+  return <DiscountForm />
 }
 
 
 // Helper Function
-
 async function saveDiscount(formData, metaobject){
 
   const newData = {
@@ -55,7 +51,7 @@ async function saveDiscount(formData, metaobject){
         await metaobject.define(VolumeDiscountModel);
       } else {
         throw error; // Re-throw if it's a different error
-      }
+      } 
     }
 
     // Now proceed with create or update
