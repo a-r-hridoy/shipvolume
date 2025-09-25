@@ -14,6 +14,7 @@ export const loader = async ({ request }) => {
   const views = await EventModel.list("", { name: "views" });
   const sessions = await EventModel.list("", { name: "sessions" });
   const channelSales = await EventModel.list("", { name: "channelSales" });
+  const volumeDiscountViews = await EventModel.list(session.shop, { name: "volumeDiscountViewed" });
   const fulfilledOrders = await EventModel.list("", {
     name: "fulfilledOrders",
   });
@@ -35,6 +36,7 @@ export const loader = async ({ request }) => {
     returningCustomerRates,
     shop: session.shop,
     verifyAppEmbed,
+    volumeDiscountViews,
     uuid: process.env.SHOPIFY_THEME_APP_EXTENSION_ID,
   });
 };

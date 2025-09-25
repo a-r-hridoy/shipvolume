@@ -1,5 +1,6 @@
 import { Grid, Layout } from "@shopify/polaris";
 import { TotalRevenue } from "../chart/totalRevenue";
+import { TotalVolumeDiscountViews } from "../chart/totalVolumeDiscountViews";
 import { ReturningCustomerRate } from "../chart/returningCustomerRate";
 import { TotalSales } from "../chart/totalSales";
 import { SalesByChannels } from "../chart/salesByChannels";
@@ -13,7 +14,7 @@ export const Analytics = () => (
   <>
     <Layout.Section>
       <Grid columns={{ xs: 1, sm: 2, md: 4, lg: 4, xl: 4 }} gap="400">
-        <TotalRevenue />
+        <TotalVolumeDiscountViews />
         <TotalOrders />
         <CustomerOverTime />
         <FulfilledOrdersOverTime />

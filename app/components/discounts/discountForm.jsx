@@ -150,6 +150,8 @@ import {
       if (isEditing) {
         data.id = loaderData.id; // Include the discount ID when updating
         data.discountId = loaderData.discountId;
+
+        console.log(loaderData);
       }
   
       await submit(data, { method: 'POST', encType: "application/json" });

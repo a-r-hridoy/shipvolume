@@ -8,6 +8,7 @@ export const VolumeDiscountModel = {
   fieldDefinitions: [
     { name: "Title", key: "title", type: "single_line_text_field" },
     { name: "Products reference", key: "products_reference", type: "list.variant_reference" },
+    // { name: "Discount Id", key: "discountId", type: "single_line_text_field" },
     { name: "Products", key: "products", type: "json" },
     { name: "Discount Values", key: "discountValues", type: "json" },
     { name: "Is active", key: "isActive", type: "boolean" },

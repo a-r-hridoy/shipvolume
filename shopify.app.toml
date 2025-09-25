@@ -12,7 +12,7 @@ dev_store_url = "shoppiapps.myshopify.com"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_metaobject_definitions,write_metaobjects,write_products,write_themes"
+scopes = "write_metaobject_definitions,write_metaobjects,write_products,write_themes,write_discounts"
 
 [auth]
 redirect_urls = ["https://seemed-disclose-wa-funky.trycloudflare.com/auth/callback", "https://seemed-disclose-wa-funky.trycloudflare.com/auth/shopify/callback", "https://seemed-disclose-wa-funky.trycloudflare.com/api/auth/callback"]
@@ -22,3 +22,9 @@ api_version = "2024-07"
 
 [pos]
 embedded = false
+
+[app_proxy]
+url = "https://seemed-disclose-wa-funky.trycloudflare.com"
+subpath = "shipvolume"
+prefix = "apps"
+
