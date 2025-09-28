@@ -1,10 +1,3 @@
-// import { json, redirect } from "@remix-run/react";
-// import { DiscountForm } from "../components/discounts/discountForm";
-// import { authenticateExtra } from "../config/shopify";
-// import { VolumeDiscountModel } from "../models/volumeDiscount.model.js";
-// import { Discount } from "../entities/discount";
-
-
 import { json, redirect } from "@remix-run/react";
 import { ContentForm } from "../components/contents/contentForm";
 import { authenticateExtra } from "../config/shopify";
